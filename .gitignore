@@ -3,5 +3,8 @@
 # environment variables
 .env
 
-#Cache folders
+# Cache folders
 __pycache__/
+
+# poetry
+poetry.lock
