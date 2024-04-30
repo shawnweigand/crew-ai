@@ -30,7 +30,7 @@ class TravelTasks:
                 """
             ),
             agent=agent,
-            async_execution=True
+            context=[identify_city, gather_city_info]
         )
 
     def identify_city(self, agent, origin, cities, interests, travel_dates):
