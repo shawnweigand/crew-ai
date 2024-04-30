@@ -1,5 +1,5 @@
 Tutorial: https://www.youtube.com/watch?v=sPzc6hMg7So&ab_channel=codewithbrandon
-Timestamp: 50:43
+Timestamp: 1:01:03
 
 pyenv to manage py versions, poetry to manage packages and envs
 
