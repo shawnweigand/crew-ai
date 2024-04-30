@@ -30,6 +30,7 @@ class TripCrew:
         self.cities = cities
         self.travel_dates = travel_dates
         self.interests = interests
+        self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
@@ -76,7 +77,9 @@ class TripCrew:
                 identify_city, 
                 gather_city_info
             ],
-            verbose=True,
+            process = Process.hierarchical,
+            manager_llm = self.OpenAIGPT35,
+            verbose = True,
         )
 
         result = crew.kickoff()
