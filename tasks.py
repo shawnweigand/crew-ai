@@ -30,7 +30,7 @@ class TravelTasks:
                 """
             ),
             agent=agent,
-            context=[identify_city, gather_city_info]
+            # context=[identify_city, gather_city_info]
         )
 
     def identify_city(self, agent, origin, cities, interests, travel_dates):
@@ -55,7 +55,7 @@ class TravelTasks:
                 """
             ),
             agent=agent,
-            async_execution=True
+            # async_execution=True
         )
 
     def gather_city_info(self, agent, city, travel_dates, interests):
@@ -78,5 +78,5 @@ class TravelTasks:
                 """
             ),
             agent=agent,
-            async_execution=True
+            # async_execution=True
         )
