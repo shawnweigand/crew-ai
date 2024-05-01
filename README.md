@@ -8,3 +8,4 @@ pyenv to manage py versions, poetry to manage packages and envs
 poetry install --no-root
 poetry shell
 poetry main.py
+python main.py

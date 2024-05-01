@@ -77,8 +77,8 @@ class TripCrew:
                 identify_city, 
                 gather_city_info
             ],
-            process = Process.hierarchical,
-            manager_llm = self.OpenAIGPT35,
+            # process = Process.hierarchical,
+            # manager_llm = self.OpenAIGPT35,
             verbose = True,
         )
 
