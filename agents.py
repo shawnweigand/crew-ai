@@ -1,10 +1,14 @@
 from crewai import Agent
 from textwrap import dedent
 from langchain.llms import OpenAI, Ollama
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, AzureChatOpenAI
 
 from tools.search_tools import SearchTools
 from tools.calculator_tools import CalculatorTools
+
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # This is an example of how to define custom agents.
 # You can define as many agents as you want.
@@ -12,6 +16,11 @@ from tools.calculator_tools import CalculatorTools
 class TravelAgents:
     def __init__(self):
         self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+        self.AzureOpenAIGPT4 = AzureChatOpenAI(
+            azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.environ.get("AZURE_OPENAI_KEY"),
+            api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
+        )
         # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
         # self.Ollama = Ollama(model="openhermes")
 
@@ -34,7 +43,7 @@ class TravelAgents:
             ],
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.AzureOpenAIGPT4,
         )
 
     def city_selection_expert(self):
@@ -53,7 +62,7 @@ class TravelAgents:
             ],            
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.AzureOpenAIGPT4,
         )
 
     def local_tour_guide(self):
@@ -71,5 +80,5 @@ class TravelAgents:
                 SearchTools.search_internet, 
             ],            allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.AzureOpenAIGPT4,
         )
