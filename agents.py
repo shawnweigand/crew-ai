@@ -18,7 +18,7 @@ class TravelAgents:
             api_key=os.environ.get("AZURE_OPENAI_KEY"),
             api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
         )
-        # self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+        self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
         # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
         # self.Ollama = Ollama(model="openhermes")
 
