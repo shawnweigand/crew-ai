@@ -25,8 +25,10 @@ class TravelTasks:
                     **Note**: {self.__tip_section()}
                 """
             ),
+            # expected_output="what it is and example of what it should look like",
             agent=agent,
-            # context=[identify_city, gather_city_info]
+            # context=[identify_city, gather_city_info],
+            # callback=print OR email OR CSV
         )
 
     def identify_city(self, agent, origin, cities, interests, travel_dates):
@@ -50,8 +52,10 @@ class TravelTasks:
                     **Note**: {self.__tip_section()} 
                 """
             ),
+            # expected_output="what it is and example of what it should look like",
             agent=agent,
             # async_execution=True
+            # callback=print OR email OR CSV
         )
 
     def gather_city_info(self, agent, city, travel_dates, interests):
@@ -73,6 +77,8 @@ class TravelTasks:
                     **Note**: {self.__tip_section()} 
                 """
             ),
+            # expected_output="what it is and example of what it should look like",
             agent=agent,
             # async_execution=True
+            # callback=print OR email OR CSV
         )
