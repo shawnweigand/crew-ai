@@ -10,17 +10,15 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-# This is an example of how to define custom agents.
-# You can define as many agents as you want.
-# You can also define custom tasks in tasks.py
 class TravelAgents:
     def __init__(self):
-        self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
         self.AzureOpenAIGPT4 = AzureChatOpenAI(
+            azure_deployment=os.environ.get("AZURE_OPENAI_DEPLOYMENT"),
             azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
             api_key=os.environ.get("AZURE_OPENAI_KEY"),
             api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
         )
+        # self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
         # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
         # self.Ollama = Ollama(model="openhermes")
 

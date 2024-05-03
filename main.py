@@ -1,6 +1,6 @@
 import os
 from crewai import Agent, Task, Crew, Process
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, AzureChatOpenAI
 # from decouple import config
 
 from textwrap import dedent
@@ -10,19 +10,13 @@ from tasks import TravelTasks
 from dotenv import load_dotenv
 load_dotenv()
 
-# Install duckduckgo-search for this example:
+# DuckDuckGo search tool
 # !pip install -U duckduckgo-search
-
 # from langchain.tools import DuckDuckGoSearchRun
-
 # search_tool = DuckDuckGoSearchRun()
 
 # os.environ["OPENAI_API_KEY"] = config("OPENAI_API_KEY")
 # os.environ["OPENAI_ORGANIZATION"] = config("OPENAI_ORGANIZATION_ID")
-
-# This is the main class that you will use to define your custom crew.
-# You can define as many agents and tasks as you want in agents.py and tasks.py
-
 
 class TripCrew:
     def __init__(self, origin, cities, travel_dates, interests):
@@ -30,7 +24,13 @@ class TripCrew:
         self.cities = cities
         self.travel_dates = travel_dates
         self.interests = interests
-        self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+        # self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+        # self.AzureOpenAIGPT4 = AzureChatOpenAI(
+        #     azure_deployment=os.environ.get("AZURE_OPENAI_DEPLOYMENT"),
+        #     azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
+        #     api_key=os.environ.get("AZURE_OPENAI_KEY"),
+        #     api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
+        # )
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
