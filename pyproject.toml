@@ -7,6 +7,7 @@ authors = ["Shawn Weigand"]
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
 crewai = "^0.11.0"
+duckduckgo-search = "^4.4.2"
 unstructured = '==0.10.25'
 pyowm = '3.3.0'
 python-dotenv = "1.0.0"
