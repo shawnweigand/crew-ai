@@ -39,9 +39,10 @@ class TravelAgents:
                 SearchTools.search_internet, 
                 CalculatorTools.calculate
             ],
-            allow_delegation=False,
+            allow_delegation=True,
             verbose=True,
             llm=self.AzureOpenAIGPT4,
+            # max_iter=3
         )
 
     def city_selection_expert(self):
@@ -58,9 +59,10 @@ class TravelAgents:
             tools=[
                 SearchTools.search_internet, 
             ],            
-            allow_delegation=False,
+            allow_delegation=True,
             verbose=True,
             llm=self.AzureOpenAIGPT4,
+            # max_iter=3
         )
 
     def local_tour_guide(self):
@@ -76,7 +78,9 @@ class TravelAgents:
             """),
             tools=[
                 SearchTools.search_internet, 
-            ],            allow_delegation=False,
+            ],            
+            allow_delegation=True,
             verbose=True,
             llm=self.AzureOpenAIGPT4,
+            # max_iter=3
         )
