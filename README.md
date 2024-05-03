@@ -10,3 +10,7 @@ pyenv to manage py versions, poetry to manage packages and envs
 poetry install --no-root
 poetry shell
 python main.py
+
+Versions:
+v1- crewai = "0.1.24"
+v2- crewai = "^0.11.0"
