@@ -39,7 +39,7 @@ class TravelAgents:
                 SearchTools.search_internet, 
                 CalculatorTools.calculate
             ],
-            allow_delegation=True,
+            # allow_delegation=True,
             verbose=True,
             llm=self.AzureOpenAIGPT4,
             # max_iter=3
@@ -59,7 +59,7 @@ class TravelAgents:
             tools=[
                 SearchTools.search_internet, 
             ],            
-            allow_delegation=True,
+            # allow_delegation=True,
             verbose=True,
             llm=self.AzureOpenAIGPT4,
             # max_iter=3
@@ -79,7 +79,7 @@ class TravelAgents:
             tools=[
                 SearchTools.search_internet, 
             ],            
-            allow_delegation=True,
+            # allow_delegation=True,
             verbose=True,
             llm=self.AzureOpenAIGPT4,
             # max_iter=3

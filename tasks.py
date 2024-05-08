@@ -25,31 +25,31 @@ class TravelTasks:
                     **Note**: {self.__tip_section()}
                 """
             ),
-            expected_output=
-            """
-                A detailed 7-day travel itinerary with per-day plans, including weather forecasts, places to eat, packing suggestions, and a budget breakdown.
+            # expected_output=
+            # """
+            #     A detailed 7-day travel itinerary with per-day plans, including weather forecasts, places to eat, packing suggestions, and a budget breakdown.
 
-                Example output:
-                [
-                    {
-                        'Budget': {'Total': '$500', 'Hotel': '$100', 'Meals': '$150', 'Activities': '$250'},
-                        'Weather Forecast': 'Sunny with a chance of rain',
-                        'Safety Tips': ['Beware of pickpockets', 'Use a money belt'],
-                        'Packing Suggestions': ['Comfortable shoes', 'Light jacket'],
-                    },
-                    {
-                        'Day': 'Day 1',
-                        'Date': '2022-07-01',
-                        'Description': 'Arrival in Paris',
-                        'Activities': ['Visit Eiffel Tower', 'Lunch at Café de Flore', 'Dinner at Le Jules Verne'],
-                        'Hotel': 'Hotel Ritz Paris',
-                        'Meals': {'Breakfast': { 'Location': 'Hotel', 'Cost': '$20' }, 'Lunch': { 'Location': 'Café de Flore', 'Cost': '$30' }, 'Dinner': { 'Location': 'Le Jules Verne', 'Cost': '$100' }},
-                        'Pack': ['Comfortable shoes', 'Light jacket'],
-                        'Budget': '$500'
-                    },
-                    {{...}}
-                ]
-            """,
+            #     Example output:
+            #     [
+            #         {
+            #             'Budget': {'Total': '$500', 'Hotel': '$100', 'Meals': '$150', 'Activities': '$250'},
+            #             'Weather Forecast': 'Sunny with a chance of rain',
+            #             'Safety Tips': ['Beware of pickpockets', 'Use a money belt'],
+            #             'Packing Suggestions': ['Comfortable shoes', 'Light jacket'],
+            #         },
+            #         {
+            #             'Day': 'Day 1',
+            #             'Date': '2022-07-01',
+            #             'Description': 'Arrival in Paris',
+            #             'Activities': ['Visit Eiffel Tower', 'Lunch at Café de Flore', 'Dinner at Le Jules Verne'],
+            #             'Hotel': 'Hotel Ritz Paris',
+            #             'Meals': {'Breakfast': { 'Location': 'Hotel', 'Cost': '$20' }, 'Lunch': { 'Location': 'Café de Flore', 'Cost': '$30' }, 'Dinner': { 'Location': 'Le Jules Verne', 'Cost': '$100' }},
+            #             'Pack': ['Comfortable shoes', 'Light jacket'],
+            #             'Budget': '$500'
+            #         },
+            #         {{...}}
+            #     ]
+            # """,
             agent=agent,
             # context=[identify_city, gather_city_info],
             # callback=print OR email OR CSV
@@ -76,21 +76,21 @@ class TravelTasks:
                     **Note**: {self.__tip_section()} 
                 """
             ),
-            expected_output=
-            """
-                A detailed report on the chosen city, including actual flight costs, weather forecast, events and attractions.
+            # expected_output=
+            # """
+            #     A detailed report on the chosen city, including actual flight costs, weather forecast, events and attractions.
 
-                Example output:
-                {
-                    'City': 'Paris',
-                    'Flight Cost': '$500',
-                    'Weather Forecast': 'Sunny with a chance of rain',
-                    'Events': ['Bastille Day Parade', 'Fashion Week'],
-                    'Attractions': ['Eiffel Tower', 'Louvre Museum']
-                }
-            """,
+            #     Example output:
+            #     {
+            #         'City': 'Paris',
+            #         'Flight Cost': '$500',
+            #         'Weather Forecast': 'Sunny with a chance of rain',
+            #         'Events': ['Bastille Day Parade', 'Fashion Week'],
+            #         'Attractions': ['Eiffel Tower', 'Louvre Museum']
+            #     }
+            # """,
             agent=agent,
-            async_execution=True
+            # async_execution=True
             # callback=print OR email OR CSV
         )
 
@@ -113,26 +113,26 @@ class TravelTasks:
                     **Note**: {self.__tip_section()} 
                 """
             ),
-            expected_output=
-            """
-                A list of information about the city, including attractions, local customs, events, and daily activity recommendations.
-                Include a thorough overview of what the city has to offer with hidden gems, cultural hotspots, must-visit landmarks, weather forecasts, and high-level costs.
+            # expected_output=
+            # """
+            #     A list of information about the city, including attractions, local customs, events, and daily activity recommendations.
+            #     Include a thorough overview of what the city has to offer with hidden gems, cultural hotspots, must-visit landmarks, weather forecasts, and high-level costs.
                 
-                Example output:
-                {
-                    'City': 'Paris',
-                    'Attractions': ['Eiffel Tower', 'Louvre Museum', 'Notre-Dame Cathedral'],
-                    'Local Customs': ['Kissing on the cheek', 'Bread with every meal'],
-                    'Events': ['Bastille Day Parade', 'Fashion Week'],
-                    'Daily Activities': ['Morning coffee at a local café', 'Afternoon visit to the Louvre']
-                    'Hidden Gems': ['Secret rooftop bar with a view', 'Underground jazz club'],
-                    'Cultural Hotspots': ['Local art galleries', 'Historical theaters'],
-                    'Landmarks': ['Eiffel Tower', 'Arc de Triomphe'],
-                    'Weather Forecast': 'Sunny with a chance of rain',
-                    'Costs': {'Average Hotel': '$150 per night', 'Average Meal': '$20 per person'}
-                }
-            """,
+            #     Example output:
+            #     {
+            #         'City': 'Paris',
+            #         'Attractions': ['Eiffel Tower', 'Louvre Museum', 'Notre-Dame Cathedral'],
+            #         'Local Customs': ['Kissing on the cheek', 'Bread with every meal'],
+            #         'Events': ['Bastille Day Parade', 'Fashion Week'],
+            #         'Daily Activities': ['Morning coffee at a local café', 'Afternoon visit to the Louvre']
+            #         'Hidden Gems': ['Secret rooftop bar with a view', 'Underground jazz club'],
+            #         'Cultural Hotspots': ['Local art galleries', 'Historical theaters'],
+            #         'Landmarks': ['Eiffel Tower', 'Arc de Triomphe'],
+            #         'Weather Forecast': 'Sunny with a chance of rain',
+            #         'Costs': {'Average Hotel': '$150 per night', 'Average Meal': '$20 per person'}
+            #     }
+            # """,
             agent=agent,
-            async_execution=True
+            # async_execution=True
             # callback=print OR email OR CSV
         )
