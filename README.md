@@ -1,7 +1,7 @@
 Tutorial: https://www.youtube.com/watch?v=sPzc6hMg7So&ab_channel=codewithbrandon
 
 New Feats: https://www.youtube.com/watch?v=Jl6BuoXcZPE&ab_channel=codewithbrandon
-Timestamp: 14:32
+Timestamp: 15:05
 
 OpenAI with CrewAI: https://docs.crewai.com/how-to/LLM-Connections/#azure-open-ai-configuration
 
