@@ -25,12 +25,12 @@ class TripCrew:
         self.travel_dates = travel_dates
         self.interests = interests
         # self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-        # self.AzureOpenAIGPT4 = AzureChatOpenAI(
-        #     azure_deployment=os.environ.get("AZURE_OPENAI_DEPLOYMENT"),
-        #     azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
-        #     api_key=os.environ.get("AZURE_OPENAI_KEY"),
-        #     api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
-        # )
+        self.AzureOpenAIGPT4 = AzureChatOpenAI(
+            azure_deployment=os.environ.get("AZURE_OPENAI_DEPLOYMENT"),
+            azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
+            api_key=os.environ.get("AZURE_OPENAI_KEY"),
+            api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
+        )
 
     def run(self):
         # Define your custom agents and tasks in agents.py and tasks.py
@@ -38,17 +38,11 @@ class TripCrew:
         tasks = TravelTasks()
 
         # Define your custom agents and tasks here
-        expert_travel_agent = agents.expert_travel_agent()
         city_selection_expert = agents.city_selection_expert()
         local_tour_guide = agents.local_tour_guide()
+        expert_travel_agent = agents.expert_travel_agent()
 
         # Custom tasks include agent name and variables as input
-        plan_itinerary = tasks.plan_itinerary(
-            expert_travel_agent,
-            self.cities,
-            self.travel_dates,
-            self.interests
-        )
 
         identify_city = tasks.identify_city(
             city_selection_expert,
@@ -62,23 +56,37 @@ class TripCrew:
             local_tour_guide,
             self.cities,
             self.travel_dates,
-            self.interests
+            self.interests,
+            [
+                identify_city
+            ]
+        )
+
+        plan_itinerary = tasks.plan_itinerary(
+            expert_travel_agent,
+            self.cities,
+            self.travel_dates,
+            self.interests,
+            [
+                gather_city_info
+            ],
+            callback_function = None # Add a callback function here
         )
 
         # Define your custom crew here
         crew = Crew(
             agents=[
-                expert_travel_agent, 
                 city_selection_expert, 
-                local_tour_guide
+                local_tour_guide,
+                expert_travel_agent
             ],
             tasks=[
-                plan_itinerary, 
                 identify_city, 
-                gather_city_info
+                gather_city_info,
+                plan_itinerary
             ],
-            # process = Process.hierarchical,
-            # manager_llm = self.OpenAIGPT35,
+            process = Process.hierarchical,
+            manager_llm = self.AzureOpenAIGPT4,
             verbose = True,
         )
 

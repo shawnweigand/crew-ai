@@ -22,29 +22,6 @@ class TravelAgents:
         # self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
         # self.Ollama = Ollama(model="openhermes")
 
-    def expert_travel_agent(self):
-        return Agent(
-            role="Expert Travel Agent",
-            backstory=dedent(
-            f"""
-                Expert in travel planning and logistics.
-                I have decades of experience making travel itineraries.
-            """),
-            goal=dedent(
-            f"""
-                Create a 7-day travel itinerary with detailed per-day plans,
-                include budget, packing suggestions, and safety tips
-            """),
-            tools=[
-                SearchTools.search_internet, 
-                CalculatorTools.calculate
-            ],
-            allow_delegation=True,
-            verbose=True,
-            llm=self.AzureOpenAIGPT4,
-            # max_iter=3
-        )
-
     def city_selection_expert(self):
         return Agent(
             role="City Selection Expert",
@@ -64,7 +41,7 @@ class TravelAgents:
             llm=self.AzureOpenAIGPT4,
             # max_iter=3
         )
-
+    
     def local_tour_guide(self):
         return Agent(
             role="Local Tour Guide",
@@ -79,6 +56,29 @@ class TravelAgents:
             tools=[
                 SearchTools.search_internet, 
             ],            
+            allow_delegation=True,
+            verbose=True,
+            llm=self.AzureOpenAIGPT4,
+            # max_iter=3
+        )
+    
+    def expert_travel_agent(self):
+        return Agent(
+            role="Expert Travel Agent",
+            backstory=dedent(
+            f"""
+                Expert in travel planning and logistics.
+                I have decades of experience making travel itineraries.
+            """),
+            goal=dedent(
+            f"""
+                Create a 7-day travel itinerary with detailed per-day plans,
+                include budget, packing suggestions, and safety tips
+            """),
+            tools=[
+                SearchTools.search_internet, 
+                CalculatorTools.calculate
+            ],
             allow_delegation=True,
             verbose=True,
             llm=self.AzureOpenAIGPT4,

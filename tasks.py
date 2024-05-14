@@ -9,7 +9,6 @@ class TravelTasks:
         return Task(
             agent=agent,
             async_execution=True,
-            # callback=print OR email OR CSV
             description=dedent(
                 f"""
                     Analyze and select the best city for a trip out of {origin} during the dates {travel_dates} based on specific criteria such as 
@@ -39,7 +38,6 @@ class TravelTasks:
             agent=agent,
             async_execution=True,
             context=context,
-            # callback=print OR email OR CSV
             description=dedent(
                 f"""
                     Compile an in-depth guide for the selected city {city} during {travel_dates}, gathering information about key attractions, local customs, 
@@ -71,12 +69,12 @@ class TravelTasks:
             """
         )
 
-    def plan_itinerary(self, agent, city, travel_dates, interests, context):
+    def plan_itinerary(self, agent, city, travel_dates, interests, context, callback_function):
         return Task(
             agent=agent,
             async_execution=True,
             context=context,
-            # callback=print OR email OR CSV
+            callback=callback_function,
             description=dedent(
                 f"""
                     Expand the city guide for {city} into a full multi-day travel itinerary during {travel_dates} with detailed per-day plans, 
