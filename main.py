@@ -1,6 +1,7 @@
 import os
 from crewai import Agent, Task, Crew, Process
 from langchain_openai import ChatOpenAI, AzureChatOpenAI
+from file_io import save_markdown
 # from decouple import config
 
 from textwrap import dedent
@@ -70,7 +71,7 @@ class TripCrew:
             [
                 gather_city_info
             ],
-            callback_function = None # Add a callback function here
+            callback_function = save_markdown # Add a callback function here
         )
 
         # Define your custom crew here

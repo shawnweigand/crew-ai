@@ -1,7 +1,7 @@
 Tutorial: https://www.youtube.com/watch?v=sPzc6hMg7So&ab_channel=codewithbrandon
 
 New Feats: https://www.youtube.com/watch?v=Jl6BuoXcZPE&ab_channel=codewithbrandon
-Timestamp: 24:05
+Timestamp: 32:26
 
 OpenAI with CrewAI: https://docs.crewai.com/how-to/LLM-Connections/#azure-open-ai-configuration
 
@@ -12,5 +12,10 @@ poetry shell
 python main.py
 
 Versions:
-v1- crewai = "0.1.24"
-v2- crewai = "^0.11.0"
+v1
+- crewai = "0.1.24"
+- python = 3.10.1
+
+v2
+- crewai = "^0.11.0"
+- python = 
