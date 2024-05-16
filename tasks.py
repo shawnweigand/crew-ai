@@ -8,7 +8,7 @@ class TravelTasks:
     def identify_city(self, agent, origin, cities, interests, travel_dates):
         return Task(
             agent=agent,
-            async_execution=True,
+            # async_execution=True,
             description=dedent(
                 f"""
                     Analyze and select the best city for a trip out of {origin} during the dates {travel_dates} based on specific criteria such as 
@@ -33,11 +33,11 @@ class TravelTasks:
             """
         )
     
-    def gather_city_info(self, agent, city, travel_dates, interests, context):
+    def gather_city_info(self, agent, city, travel_dates, interests):#, context):
         return Task(
             agent=agent,
             async_execution=True,
-            context=context,
+            # context=context,
             description=dedent(
                 f"""
                     Compile an in-depth guide for the selected city {city} during {travel_dates}, gathering information about key attractions, local customs, 
@@ -69,7 +69,7 @@ class TravelTasks:
             """
         )
 
-    def plan_itinerary(self, agent, city, travel_dates, interests, context, callback_function):
+    def plan_itinerary(self, agent, context, callback_function):
         return Task(
             agent=agent,
             async_execution=True,
@@ -77,10 +77,10 @@ class TravelTasks:
             callback=callback_function,
             description=dedent(
                 f"""
-                    Expand the city guide for {city} into a full multi-day travel itinerary during {travel_dates} with detailed per-day plans, 
-                    including weather forecasts, places to eat, packing suggestions, and a budget breakdown that are relevant to the travelers interests 
-                    of {interests}. You MUST suggest actual places to visit, actual hotels to stay, and actual restaurants to go to. This itinerary should 
-                    cover all aspects of the trip, from arrival to departure, integrating the city guide information with practical travel logistics.
+                    Expand the city guide for the selected city into a full multi-day travel itinerary during the chosen travel dates with detailed per-day 
+                    plans, including weather forecasts, places to eat, packing suggestions, and a budget breakdown that are relevant to the travelers interests. 
+                    You MUST suggest actual places to visit, actual hotels to stay, and actual restaurants to go to. This itinerary should  cover all aspects of
+                    the trip, from arrival to departure, integrating the city guide information with practical travel logistics.
 
                     **Note**: {self.__tip_section()}
                 """
