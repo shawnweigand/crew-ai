@@ -1,15 +1,39 @@
+from langchain_openai import AzureChatOpenAI
+import os
+from dotenv import load_dotenv
+from agents import TravelAgents
+from tasks import TravelTasks
+from crewai import Crew, Process
 
+# Initialize OpenAI GPT-4 language model
+load_dotenv()
+AzureOpenAIGPT4 = AzureChatOpenAI(
+    azure_deployment=os.environ.get("AZURE_OPENAI_DEPLOYMENT"),
+    azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
+    api_key=os.environ.get("AZURE_OPENAI_KEY"),
+    api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
+)
 
-
-
-
+agents = TravelAgents()
+tasks = TravelTasks()
 
 # Setting up agents
+editor = agents.editor_agent()
+researcher = agents.destination_research_agent()
+compiler = agents.travel_plan_compiler_agent()
 
 # Setting up tasks
+research_destination = tasks.research_destination_task(researcher)
+compile_plan = tasks.compile_plan_task(compiler, [research_destination])
+edit_travel_plan = tasks.edit_travel_plan_task(editor, [compile_plan], callback_function=None)
 
 # Setting up tools
-
+crew = Crew(
+    agents=[editor, researcher, compiler],
+    tasks=[research_destination, compile_plan, edit_travel_plan],
+    process=Process.hierarchical,
+    manager_llm=None,
+)
 
 
 
