@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from agents import TravelAgents
 from tasks import TravelTasks
 from crewai import Crew, Process
+from file_io import save_markdown
 
 # Initialize OpenAI GPT-4 language model
 load_dotenv()
@@ -17,23 +18,36 @@ AzureOpenAIGPT4 = AzureChatOpenAI(
 agents = TravelAgents()
 tasks = TravelTasks()
 
+# Inputs
+print("## Welcome to Trip Planner Crew")
+print("-------------------------------")
+origin = input("Where will you be traveling from?")
+city = input("What are city are you interested in visiting?")
+travel_dates = input("What is the date range you are interested in traveling?")
+interests = input("What are some of your high level interests and hobbies?")
+
 # Setting up agents
 editor = agents.editor_agent()
 researcher = agents.destination_research_agent()
 compiler = agents.travel_plan_compiler_agent()
 
 # Setting up tasks
-research_destination = tasks.research_destination_task(researcher)
-compile_plan = tasks.compile_plan_task(compiler, [research_destination])
-edit_travel_plan = tasks.edit_travel_plan_task(editor, [compile_plan], callback_function=None)
+research_destination = tasks.research_destination_task(researcher, city, travel_dates, interests)
+compile_plan = tasks.compile_travel_plan_task(compiler, [research_destination], city, origin, travel_dates, interests)
+edit_travel_plan = tasks.edit_travel_plan_task(editor, [compile_plan], save_markdown)
 
 # Setting up tools
 crew = Crew(
     agents=[editor, researcher, compiler],
     tasks=[research_destination, compile_plan, edit_travel_plan],
     process=Process.hierarchical,
-    manager_llm=None,
+    manager_llm=AzureOpenAIGPT4
 )
+
+#Kickoff the crew
+results = crew.kickoff()
+print("Crew work results:")
+print(results)
 
 
 

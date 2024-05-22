@@ -1,10 +1,10 @@
 from crewai import Task
 
 class TravelTasks():
-    def research_destination_task(self, agent):
+    def research_destination_task(self, agent, city, travel_dates, interests):
         return Task(
-            description="""Compile an in-depth guide for the selected city during the travel dates, gathering information about key attractions, 
-            local customs, special events, and daily activity recommendations. This guide should align with the travelers interests and provide a thorough
+            description=f"""Compile an in-depth guide for the selected city {city}, during the travel dates {travel_dates}, gathering information about key attractions, 
+            local customs, special events, and daily activity recommendations. This guide should align with the travelers interests of {interests} and provide a thorough
             overview of what the city has to offer, including hidden gems, cultural hotspots, must-visit landmarks, weather forecasts, and high-level costs.""",
             agent=agent,
             async_execution=True,
@@ -19,10 +19,10 @@ class TravelTasks():
             }"""
         )
     
-    def compile_travel_plan_task(self, agent, context):
+    def compile_travel_plan_task(self, agent, context, city, origin, travel_dates, interests):
         return Task(
-            description="""Expand the city guide for the selected city into a full multi-day travel itinerary during the chosen travel dates with detailed 
-            per-day plans, including weather forecasts, places to eat, packing suggestions, and a budget breakdown that are relevant to the travelers interests. 
+            description=f"""Expand the city guide for the trip to {city} from {origin} into a full multi-day travel itinerary during the chosen travel dates of {travel_dates} with detailed 
+            per-day plans, including weather forecasts, places to eat, packing suggestions, and a budget breakdown that are relevant to the travelers interests o f{interests}. 
             You MUST suggest actual places to visit, actual hotels to stay, and actual restaurants to go to. This itinerary should  cover all aspects of the 
             trip, from arrival to departure, integrating the city guide information with practical travel logistics.""",
             agent=agent,

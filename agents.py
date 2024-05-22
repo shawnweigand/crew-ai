@@ -1,5 +1,6 @@
 from crewai import Agent
 from tools.search_tools import SearchTools
+from tools.calculator_tools import CalculatorTools
 class TravelAgents:
 
     def editor_agent(self):
@@ -36,6 +37,7 @@ class TravelAgents:
             such as daily itineraries, activity suggestions, dining options, packing suggestions, budget breakdowns, and weather forecasts. 
             Ensure that the plan is well-structured, informative, and aligned with the user's interests and travel dates.""",
             verbose=True,
+            tools=[CalculatorTools.calculate]
         )
 
 
